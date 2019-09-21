@@ -11,7 +11,12 @@ public class Semillero {
 
 	private String nombre;
 	
+	@Column(name="descripcion", length=2000)
 	private String descripcion;
+	
+	@Column(name="condicion", length=2000)
+	private String condicion;
+	
 	
 	@OneToOne
 	private Profesor profesor;
@@ -22,15 +27,23 @@ public class Semillero {
 		super();
 	}
 
-	public Semillero(Long id, String nombre, String descripcion, Profesor profesor, Boolean estado) {
+	public Semillero(String nombre, String descripcion, String condicion, Profesor profesor, Boolean estado) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.profesor = profesor;
 		this.estado = estado;
+		this.condicion = condicion;
 	}
 
+	public String getCondicion() {
+		return condicion;
+	}
+	
+	public void setCondicion(String condicion) {
+		this.condicion = condicion;
+	}
+	
 	public Long getId() {
 		return id;
 	}
