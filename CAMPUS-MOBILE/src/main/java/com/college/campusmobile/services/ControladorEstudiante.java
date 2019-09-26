@@ -69,6 +69,14 @@ public class ControladorEstudiante {
 
 	}
 
+	@GetMapping(path = "/verProgramasPorEstudiante")
+	public Iterable<Programa> verProgramasPorEstudiante(@RequestParam Long id){
+		Estudiante estudiante = repositorioEstudiantesDAO.findById(id).get();
+		return estudiante.getProgramas();
+	}
+	
+	
+	
 	@PostMapping(path="agregarMateriaEstudiante")
 	public @ResponseBody String agregarMateriaEstudiante(@RequestParam Long id, @RequestParam Long id_materia) {
 		Optional<Materia> materia = repositorioMateriasDao.findById(id_materia);

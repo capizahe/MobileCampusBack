@@ -1,4 +1,6 @@
 package com.college.campusmobile.model;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,24 +11,24 @@ public class Facultad {
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private Long id; 
 	
+	@Column(unique=true)
 	private String nombre;
 	
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Programa programa;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Programa> programa;
 	
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Semillero semillero;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Semillero> semilleros;
 	
 	public Facultad() {
 		super();
 	}
 
-	public Facultad(Long id, String nombre, Programa programa, Semillero semillero) {
+	public Facultad(String nombre, List<Programa> programa, List<Semillero> semilleros) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.programa = programa;
-		this.semillero = semillero;
+		this.semilleros = semilleros;
 	}
 
 	public Long getId() {
@@ -45,21 +47,22 @@ public class Facultad {
 		this.nombre = nombre;
 	}
 
-	public Programa getPrograma() {
+	public List<Programa> getPrograma() {
 		return programa;
 	}
 
-	public void setPrograma(Programa programa) {
+	public void setPrograma(List<Programa> programa) {
 		this.programa = programa;
 	}
 
-	public Semillero getSemillero() {
-		return semillero;
+	public List<Semillero> getSemilleros() {
+		return semilleros;
 	}
 
-	public void setSemillero(Semillero semillero) {
-		this.semillero = semillero;
+	public void setSemilleros(List<Semillero> semilleros) {
+		this.semilleros = semilleros;
 	}
+
 	
 	
 	

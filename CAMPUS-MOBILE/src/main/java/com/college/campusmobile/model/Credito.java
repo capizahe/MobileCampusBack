@@ -2,27 +2,35 @@ package com.college.campusmobile.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "credito")
 public class Credito {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    private String nombre;
-    
-    private Integer cantidad;
 
-    public Credito() {
-    	
-    }
-    
-	public Credito(Long id, String nombre, Integer cantidad) {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	private String nombre;
+
+	private Integer cantidad;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonBackReference
+	private Programa programa;
+	
+	public Credito() {
+
+	}
+
+
+	public Credito(String nombre, Integer cantidad, Programa programa) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
+		this.programa = programa;
 	}
 
 	public Long getId() {
@@ -48,7 +56,16 @@ public class Credito {
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-    
-    
+
+	public Programa getPrograma() {
+		return programa;
+	}
+
+	public void setPrograma(Programa programa) {
+		this.programa = programa;
+	}
+
+
+
 
 }

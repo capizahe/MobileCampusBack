@@ -13,6 +13,7 @@ public class Estudiante {
 	private Long id;
 	
 	@NotNull
+	@Column(unique = true)
 	private String nombre;
 	
 	@NotNull

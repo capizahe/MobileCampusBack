@@ -1,5 +1,9 @@
 package com.college.campusmobile.model;
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="programa")
@@ -11,14 +15,18 @@ public class Programa {
 	
 	private String nombre;
 	
-	@OneToOne
-	private Credito creditos_academicos;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "programa")
+	@JsonManagedReference
+	private List<Credito> creditos;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Facultad facultad;
+	
 
-	public Programa(Long id, String nombre, Credito creditos_academicos) {
+	public Programa(String nombre, List<Credito> creditos) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
-		this.creditos_academicos = creditos_academicos;
+		this.creditos = creditos;
 	}
 	
 	public Programa() {
@@ -40,12 +48,12 @@ public class Programa {
 		this.nombre = nombre;
 	}
 
-	public Credito getCreditos_academicos() {
-		return creditos_academicos;
+	public List<Credito> getCreditos_academicos() {
+		return creditos;
 	}
 
-	public void setCreditos_academicos(Credito creditos_academicos) {
-		this.creditos_academicos = creditos_academicos;
+	public void setCreditos_academicos(List<Credito> creditos_academicos) {
+		this.creditos = creditos_academicos;
 	}
 	
 	

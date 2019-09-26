@@ -17,7 +17,6 @@ public class Semillero {
 	@Column(name="condicion", length=2000)
 	private String condicion;
 	
-	
 	@OneToOne
 	private Profesor profesor;
 	

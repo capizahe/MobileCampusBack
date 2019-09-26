@@ -10,5 +10,8 @@ import com.college.campusmobile.model.Semillero;
 public interface RepositorioSemillero extends CrudRepository<Semillero, Long> {
 	
 	public Optional<Semillero> findSemilleroByProfesor(Profesor profesor);
+	public Optional<Semillero> findSemilleroByNombre(String nombre);
+
+	
 
 }
