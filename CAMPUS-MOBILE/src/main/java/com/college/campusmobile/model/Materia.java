@@ -17,22 +17,12 @@ public class Materia {
 	
 	private Integer cant_creditos;
 	
-	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonBackReference
-	private Profesor profesor;
-
-	public Materia(String nombre, Integer cant_creditos, Profesor profesor) {
-		super();
-		this.nombre = nombre;
-		this.cant_creditos = cant_creditos;
-		this.profesor = profesor;
-	}
+	private String profesor;
 
 	public Materia() {
-		super();
+		
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -57,13 +47,22 @@ public class Materia {
 		this.cant_creditos = cant_creditos;
 	}
 
-	public Profesor getProfesor() {
+	public String getProfesor() {
 		return profesor;
 	}
 
-	public void setProfesor(Profesor profesor) {
+	public void setProfesor(String profesor) {
 		this.profesor = profesor;
 	}
+
+	public Materia(String nombre, Integer cant_creditos, String profesor) {
+		super();
+		this.nombre = nombre;
+		this.cant_creditos = cant_creditos;
+		this.profesor = profesor;
+	}
+
+
 	
 	
 	

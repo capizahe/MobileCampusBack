@@ -17,8 +17,9 @@ public class Semillero {
 	@Column(name="condicion", length=2000)
 	private String condicion;
 	
-	@OneToOne
-	private Profesor profesor;
+	private String  profesor;
+	
+	private String correo_profesor;
 	
 	private Boolean estado;
 	
@@ -26,23 +27,6 @@ public class Semillero {
 		super();
 	}
 
-	public Semillero(String nombre, String descripcion, String condicion, Profesor profesor, Boolean estado) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.profesor = profesor;
-		this.estado = estado;
-		this.condicion = condicion;
-	}
-
-	public String getCondicion() {
-		return condicion;
-	}
-	
-	public void setCondicion(String condicion) {
-		this.condicion = condicion;
-	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -67,12 +51,28 @@ public class Semillero {
 		this.descripcion = descripcion;
 	}
 
-	public Profesor getProfesor() {
+	public String getCondicion() {
+		return condicion;
+	}
+
+	public void setCondicion(String condicion) {
+		this.condicion = condicion;
+	}
+
+	public String getProfesor() {
 		return profesor;
 	}
 
-	public void setProfesor(Profesor profesor) {
+	public void setProfesor(String profesor) {
 		this.profesor = profesor;
+	}
+
+	public String getCorreo_profesor() {
+		return correo_profesor;
+	}
+
+	public void setCorreo_profesor(String correo_profesor) {
+		this.correo_profesor = correo_profesor;
 	}
 
 	public Boolean getEstado() {
@@ -82,6 +82,17 @@ public class Semillero {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+
+	public Semillero(String nombre, String descripcion, String condicion, String profesor,
+			String correo_profesor, Boolean estado) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.condicion = condicion;
+		this.profesor = profesor;
+		this.correo_profesor = correo_profesor;
+		this.estado = estado;
+	}
 	
 	
+
 }

@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.college.campusmobile.model.Profesor;
 import com.college.campusmobile.model.Semillero;
-import com.college.campusmobile.repository.RepositorioProfesores;
 import com.college.campusmobile.repository.RepositorioSemillero;
 
 @Controller
@@ -22,8 +19,6 @@ public class ControladorSemillero {
 	@Autowired 
 	private RepositorioSemillero repositorioSemilleroDao;
 
-	@Autowired
-	private RepositorioProfesores repositorioProfesoresDao;
 
 	@GetMapping(path="/verSemilleros")
 	public @ResponseBody Iterable<Semillero> verRepositorios(){
@@ -31,26 +26,17 @@ public class ControladorSemillero {
 	}
 
 	@GetMapping(path="/verSemilleroPorProfesor")
-	public @ResponseBody Semillero verSemilleroPorProfesor(@RequestParam Long id) {
-		Optional<Profesor> profesor = repositorioProfesoresDao.findById(id);		
-		if(profesor.isPresent()) {
-			Optional<Semillero> semillero = repositorioSemilleroDao.findSemilleroByProfesor(profesor.get());
-			if(semillero.isPresent()) {
-				return semillero.get();
-			}else {
-				return null;
-			}
-		} return null;
-	}
-	
-	@PostMapping(path="/agregarSemillero")
-	public @ResponseBody String agregarSemillero(@RequestParam String nombre, @RequestParam String descripcion, @RequestParam String condicion, @RequestParam Long profesor_id, @RequestParam Boolean estado) {
-		Optional<Profesor> profesor = repositorioProfesoresDao.findById(profesor_id);
-		if(profesor.isPresent()) {
-			Semillero semillero = new Semillero(nombre, descripcion, condicion, profesor.get(), estado);
+	public @ResponseBody Semillero verSemilleroPorProfesor(@RequestParam String profesor) {
+		Optional<Semillero> semillero = repositorioSemilleroDao.findSemilleroByProfesor(profesor);
+		if(semillero.isPresent()) return semillero.get();
+			return null;
+		}
+
+		@PostMapping(path="/agregarSemillero")
+		public @ResponseBody String agregarSemillero(@RequestParam String nombre, @RequestParam String descripcion, @RequestParam String condicion, @RequestParam String profesor, @RequestParam String correo_profesor, @RequestParam Boolean estado) {
+			Semillero semillero = new Semillero(nombre, descripcion, condicion, profesor, correo_profesor, estado);
 			repositorioSemilleroDao.save(semillero);
 			return "El semillero "+nombre+ " fue agregado satisfactoriamente.";
-		}else return "El semillero no pudo ser agregado.";
-	}
+		}
 
-}
+	}
