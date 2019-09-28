@@ -18,7 +18,7 @@ import com.college.campusmobile.repository.RepositorioCredito;
 import com.college.campusmobile.repository.RepositorioPrograma;
 
 @Controller
-@RequestMapping("/programa")
+@RequestMapping("/	")
 public class ControladorPrograma {
 
 	@Autowired
@@ -50,7 +50,7 @@ public class ControladorPrograma {
 	public @ResponseBody Iterable<Credito> verCreditosPorPrograma(@RequestParam String nombre){
 		Optional<Programa> programa = repositorioProgramaDao.findProgramaByNombre(nombre);
 		if(programa.isPresent()) {
-			return programa.get().getCreditos_academicos();
+			return programa.get().getCreditos();
 		} return null;
 	}
 	
@@ -59,7 +59,7 @@ public class ControladorPrograma {
 		Optional<Programa> programa = repositorioProgramaDao.findProgramaByNombre(nombre_programa);
 		Optional<Credito> credito = repositorioCredito.findCreditoByNombre(nombre_credito);
 		if(programa.isPresent() && credito.isPresent()) {
-			programa.get().getCreditos_academicos().add(credito.get());
+			programa.get().getCreditos().add(credito.get());
 			repositorioProgramaDao.save(programa.get());
 			return "El credito "+credito.get().getNombre()+ " fue agregado satisfactoriamente al programa "+programa.get().getNombre();
 			}

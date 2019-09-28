@@ -48,11 +48,11 @@ public class Programa {
 		this.nombre = nombre;
 	}
 
-	public List<Credito> getCreditos_academicos() {
+	public List<Credito> getCreditos() {
 		return creditos;
 	}
 
-	public void setCreditos_academicos(List<Credito> creditos_academicos) {
+	public void setCreditos(List<Credito> creditos_academicos) {
 		this.creditos = creditos_academicos;
 	}
 	
