@@ -14,11 +14,13 @@ public class Login {
 	
 	private String contrasena;
 
-	public Login(Long id, Estudiante estudiante, String contrasena) {
+	public Login(Estudiante estudiante, String contrasena) {
 		super();
-		this.id = id;
 		this.estudiante = estudiante;
 		this.contrasena = contrasena;
+	}
+	public Login() {
+		
 	}
 
 	public Long getId() {
@@ -45,6 +47,4 @@ public class Login {
 		this.contrasena = contrasena;
 	}
 	
-	
-
 }

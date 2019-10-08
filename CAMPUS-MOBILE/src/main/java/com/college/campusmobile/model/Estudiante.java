@@ -31,6 +31,7 @@ public class Estudiante {
 	private String email;
 	
 	@NotNull
+	@Column(unique=true, nullable=false)
 	private String usuario;
 	
 	@OneToMany(cascade = CascadeType.ALL)
