@@ -1,5 +1,6 @@
-package com.college.campusmobile.services;
+package services;
 
+import java.util.Optional;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.college.campusmobile.model.Estudiante;
 import com.college.campusmobile.model.Login;
 import com.college.campusmobile.repository.RepositorioEstudiantes;
 import com.college.campusmobile.repository.RepositorioLogin;
 
-@Controller
-@RequestMapping("/login")
+@RestController
 public class ControladorLogin {
 
 	@Autowired
@@ -26,35 +27,32 @@ public class ControladorLogin {
 	private RepositorioEstudiantes repositorioEstudianteDao;
 
 	@PostMapping(path = "/estudiante")
-	public @ResponseBody Estudiante loginEstudiante(@RequestParam String usuario, @RequestParam String password){
+	public @ResponseBody Estudiante loginEstudiante(@RequestParam String usuario, @RequestParam String password) {
 		Optional<Estudiante> estudiante = repositorioEstudianteDao.findEstudianteByUsuario(usuario);
-		if(estudiante.isPresent()) {
+		if (estudiante.isPresent()) {
 			Optional<Login> login_estudiante = repositorioLoginDao.findLoginByEstudiante(estudiante.get());
-			if(login_estudiante.isPresent()) {
-				if(login_estudiante.get().getContrasena().equals(password)){
+			if (login_estudiante.isPresent()) {
+				if (login_estudiante.get().getContrasena().equals(password)) {
 					return login_estudiante.get().getEstudiante();
 				}
-				return null;	
+				return null;
 			}
 		}
 		return null;
 	}
-    @PostMapping(path = "/agregar_estudiante")
+
+	@PostMapping(path = "/agregar_estudiante")
 	public @ResponseBody String agregarEstudiante(@RequestParam String usuario, @RequestParam String password) {
 		Optional<Estudiante> estudiante = repositorioEstudianteDao.findEstudianteByUsuario(usuario);
-		if(estudiante.isPresent()) {
+		if (estudiante.isPresent()) {
 			Optional<Login> login_estudiante = repositorioLoginDao.findLoginByEstudiante(estudiante.get());
-			if(login_estudiante.isPresent()) return "El estudiante "+estudiante.get()+" ya se encuentra agregado.";
+			if (login_estudiante.isPresent())
+				return "El estudiante " + estudiante.get() + " ya se encuentra agregado.";
 			Login login = new Login(estudiante.get(), password);
 			repositorioLoginDao.save(login);
-			return "El estudiante "+ estudiante.get().getUsuario()+ " agregado satisfactoriamente.";
-		}
-		else return "El estudiante no se encuentra";
+			return "El estudiante " + estudiante.get().getUsuario() + " agregado satisfactoriamente.";
+		} else
+			return "El estudiante no se encuentra";
 	}
-
-
-
-
-
 
 }

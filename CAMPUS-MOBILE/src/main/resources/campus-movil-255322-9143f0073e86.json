@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "campus-movil-255322",
+  "private_key_id": "9143f0073e868753680fc22bbfdca0d340da617c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+XNMrtbVCQ+C2\nQpOGs1ApXZd6H9kRVeaYyeKIS8sFZq/USoy68gzZWvekZiDmtV3HXRrsXKE+PsTY\nc5aZNYb5iU9cnD0u+VtJVuyz87J+rYrgBAnF9tuul7Gv7DPQGKyAdLXSUtnJCxq3\nv5dbQwToENSdrX1/I1Y4Md1RQpPRqhVNwFHIqdR/ZOUyUP2OoyCuU4ouxNCdESVZ\n0kxBNEK+omjfigu2iJAsIgT/O9KykR7h/qD6FcNVg7YfoFy/ZDQ/Q+dFq422vwKx\nRZrPDobM3mClvsmbak5Qg+ormWtT1O/liQXGOewqhHMHEmDRgwTuWoBlSyLbXggN\nJVdpS3hrAgMBAAECggEAELFtJzEZAwWWyATQkQhaaDY32VK/o0CIJy/U+KTE2eVm\nV9RtwNsG+2x5uOXnzrNq1Ne6S63XyfCRLHX+Z9ME0g8TcYiV6O+e7LB9s04Ugf1P\n51MTVFPQceAFierJpF71iZIye44eYP3jSue3Kx6WaI9JRcZ38dU0c1sUEFMpSUJc\n+wc7SSfkcejkDk26upUsKEvSYf4AMVXhlvIonJnkhY6ysz6/KEtHaSlISuree+q3\npAhJGP/XsJYcViuCauIz6Y3/u4ZgD1VTfkfHQY+QbOGQTjkE3kq/jdKhpd2jAMlE\nQB0SXbfqZ1h0TgYzHmcDDdHNs9Tj7lxGcq/Wam0gsQKBgQD43qDcKZYnyk/wHnGB\nMAgGsPG4HLnmHoNYXByjXJClCtLGLpy4KjQO1mjHBnUtR3Rx1J7+jCFcp0kkJ/Q6\nHuyKjXZWCC+67X42DA1hMhbraCu954QLdz+Gt/EZC1h6Bn+iUEB5eb8c8mNRyyHw\njeMFwmC0FLHBWeqVfXvVonVNCQKBgQDD0RFeh6Nk/64D8m3lCU5+6GcAigechpGX\nJNTQ/oq1vJOfOBnl4Gldi65lvdXzpiAJXE+A39ve42ykZYb1ZWrunc5mob/oF3T4\nI4l+6PgNljt4Nk7q5SctqurzUHu0CK1pUVaDiGFTBCbY3yyRYPlsObO0ohcNhvch\niRnvFA2q0wKBgGhquCFHjYmqV7nOfB8Q8P0ltnViEBleCgvDsfxUtReaH+8o1XZr\ntqXXDeUbb4SM621rIT55uvGt+oEiBlVwbhx/1/umuaf7Ry4UBnUWWAlzDo9CGOPa\np5u1h4HTgc7I9To746FUFHxnsoY57UaJsYvUD1DfMemG+Wa5XIC5BfBJAoGAcwua\nENfP/77YFimQt0fIfnc8TOzLnALT9uEEx+VEyZGJiboEPTKjtPoj9FKcKRIpMFaz\nvxvGqiUj51JfAD4dnSPJ6DKP9WQSrNb0KUPmuNTTC8WciBUp94K7l0hp5VRTzdSj\n55Nw2r1NtY0pOiCnahZcpnu035W0DFfojLZTcVECgYEA0p4FhDufC7Nhu5Qo7yvP\nX+ObVptDgejt51n3DTbRO3WA8foy53FgaaHnvCVKuf9Oce15AEg33GpmcOKHvlnS\ni/PLmHgkp3NX6slK3C7vgnwRLbVfl27/qXkKrND5ZAWJItmsMAvgDm/hCk8DOWBI\noYU3Zm7VtZC46DBxI5LqNNo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "campus-movil-255322@appspot.gserviceaccount.com",
+  "client_id": "108418553428303060071",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/campus-movil-255322%40appspot.gserviceaccount.com"
+}

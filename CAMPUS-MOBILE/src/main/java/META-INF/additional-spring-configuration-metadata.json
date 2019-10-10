@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "spring.cloud.gcp.sql.database-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gcp.sql.database-name'"
+  },
+  {
+    "name": "spring.cloud.gcp.project-id",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gcp.project-id'"
+  },
+  {
+    "name": "spring.cloud.gcp.sql.instance-connection-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gcp.sql.instance-connection-name'"
+  },
+  {
+    "name": "spring.cloud.gcp.sql.database-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gcp.sql.database-name'"
+  }
+]}
