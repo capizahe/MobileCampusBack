@@ -1,6 +1,14 @@
 package com.college.campusmobile.model;
 import javax.persistence.*;
 
+import com.college.campusmobile.model.Estudiante;
+import com.college.campusmobile.model.Facultad;
+import com.college.campusmobile.model.Materia;
+import com.college.campusmobile.model.Programa;
+import com.college.campusmobile.repository.RepositorioEstudiantes;
+import com.college.campusmobile.repository.RepositorioMaterias;
+
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -17,12 +25,25 @@ public class Materia {
 	
 	private Integer cant_creditos;
 	
-	private String profesor;
-
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Programa programa;
+	
+	
 	public Materia() {
 		
 	}
 	
+	public Programa getPrograma() {
+		return programa;
+	}
+
+
+	public void setPrograma(Programa programa) {
+		this.programa = programa;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -47,20 +68,17 @@ public class Materia {
 		this.cant_creditos = cant_creditos;
 	}
 
-	public String getProfesor() {
-		return profesor;
-	}
 
-	public void setProfesor(String profesor) {
-		this.profesor = profesor;
-	}
 
-	public Materia(String nombre, Integer cant_creditos, String profesor) {
+	public Materia(String nombre, Integer cant_creditos, Programa programa) {
 		super();
 		this.nombre = nombre;
 		this.cant_creditos = cant_creditos;
-		this.profesor = profesor;
+		this.programa = programa;
 	}
+
+
+	
 
 
 	

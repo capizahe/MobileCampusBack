@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.college.campusmobile.model.Credito;
-import com.college.campusmobile.model.Programa;
-import com.college.campusmobile.repository.RepositorioCredito;
-import com.college.campusmobile.repository.RepositorioPrograma;
+import com.college.campusmobile.model.*;
+import com.college.campusmobile.repository.*;
+
+
 
 @Controller
-@RequestMapping("/	")
+@RequestMapping("/programa")
 public class ControladorPrograma {
 
 	@Autowired
@@ -26,6 +26,9 @@ public class ControladorPrograma {
 	
 	@Autowired
 	private RepositorioCredito repositorioCredito;
+	
+	@Autowired
+	private RepositorioFacultad repositorioFacultadDao;
 
 	@GetMapping(path = "/verProgramas")
 	public Iterable<Programa> verProgramas(){
@@ -33,17 +36,21 @@ public class ControladorPrograma {
 	}
 
 	@PostMapping(path = "/agregarPrograma")
-	public @ResponseBody String agregarPrograma(@RequestParam String nombre, @RequestParam List<Credito> creditos ){
-		Programa programa = new Programa(nombre,creditos);
+	public @ResponseBody String agregarPrograma(@RequestParam String nombre, @RequestParam Facultad facultad, @RequestParam List<Credito> creditos, @RequestParam List<Materia> materias ){
+		Programa programa = new Programa(nombre,facultad,creditos,materias);
 		repositorioProgramaDao.save(programa);
 		return "El programa academico "+nombre+ " fue agregado satisfactoriamente";
 	}
 
 	@PostMapping(path = "/agregarProgramaBasico")
-	public @ResponseBody String agregarProgramaBasico(@RequestParam String nombre ) {
-		Programa programa = new Programa(nombre, new ArrayList<Credito>());
+	public @ResponseBody String agregarProgramaBasico(@RequestParam String nombre, @RequestParam String facultad ) {
+		Optional<Facultad> facultad_ = repositorioFacultadDao.findFacultadByNombre(facultad);
+		if(facultad_.isPresent()) {
+		Programa programa = new Programa(nombre,facultad_.get(),new ArrayList<Credito>(),new ArrayList<Materia>());
 		repositorioProgramaDao.save(programa);
 		return "El programa "+nombre+ " fue agregado satisfactoriamente";
+		}
+		return "El programa no pudo se guardado ya que no se encuentra la facultad "+facultad; 
 	}
 
 	@GetMapping(path = "/verCreditosPorPrograma")

@@ -1,4 +1,5 @@
 package com.college.campusmobile.model;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,13 +23,33 @@ public class Programa {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Facultad facultad;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Materia> materias;
 
-	public Programa(String nombre, List<Credito> creditos) {
+	public Programa(String nombre, Facultad facultad, List<Credito> creditos2, List<Materia> materias2) {
 		super();
 		this.nombre = nombre;
-		this.creditos = creditos;
+		this.creditos = creditos2;
+		this.facultad = facultad;
+		this.materias = materias2;
 	}
-	
+
+	public List<Materia> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
+	}
+
+	public Facultad getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(Facultad facultad) {
+		this.facultad = facultad;
+	}
+
 	public Programa() {
 	}
 
