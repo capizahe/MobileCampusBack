@@ -26,7 +26,7 @@ public class ControladorLogin {
 	@Autowired
 	private RepositorioEstudiantes repositorioEstudianteDao;
 
-	@PostMapping(path = "/estudiante")
+	@PostMapping(path = "/login/estudiante")
 	public @ResponseBody Estudiante loginEstudiante(@RequestParam String usuario, @RequestParam String password) {
 		Optional<Estudiante> estudiante = repositorioEstudianteDao.findEstudianteByUsuario(usuario);
 		if (estudiante.isPresent()) {
