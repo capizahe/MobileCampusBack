@@ -3,6 +3,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Facultad")
 public class Facultad {
@@ -15,6 +18,7 @@ public class Facultad {
 	private String nombre;
 	
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnoreProperties("facultad")	
 	private List<Programa> programa;
 	
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

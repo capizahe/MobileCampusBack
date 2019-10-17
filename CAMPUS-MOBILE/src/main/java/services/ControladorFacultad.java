@@ -68,4 +68,5 @@ public class ControladorFacultad {
 		}
 		return "Puede que el programa o la facultad no exista.";
 	}
+	
 }

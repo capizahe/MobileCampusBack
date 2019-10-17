@@ -1,9 +1,13 @@
 package com.college.campusmobile.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="Estudiante")
@@ -18,6 +22,7 @@ public class Estudiante {
 	
 	@NotNull
 	private String apellido;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Facultad> facultad;
@@ -34,12 +39,12 @@ public class Estudiante {
 	@Column(unique=true, nullable=false)
 	private String usuario;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Programa> programas;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Programa> programas;
 	
 	public Estudiante(Long id, @NotNull String nombre, @NotNull String apellido, List<Facultad> facultad,
 			String telefono, List<Materia> materias, @NotNull String email, @NotNull String usuario,
-			List<Programa> programas) {
+			Set<Programa> programas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -56,11 +61,11 @@ public class Estudiante {
 		super();
 	}
 
-	public List<Programa> getProgramas() {
+	public Set<Programa> getProgramas() {
 		return programas;
 	}
 
-	public void setProgramas(List<Programa> programas) {
+	public void setProgramas(Set<Programa> programas) {
 		this.programas = programas;
 	}
 

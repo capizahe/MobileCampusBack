@@ -1,7 +1,8 @@
 package services;
 
 import java.util.Optional;
-
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -59,7 +60,7 @@ public class ControladorEstudiante {
 	public @ResponseBody String agregarEstudiante(@RequestParam Long id, @RequestParam String nombre,
 			@RequestParam String apellido, @RequestParam List<Facultad> facultad, @RequestParam String telefono,
 			@RequestParam List<Materia> materias, @RequestParam String email, @RequestParam String usuario,
-			@RequestParam List<Programa> programa) {
+			@RequestParam Set<Programa> programa) {
 		
 		Estudiante estudiante = new Estudiante(id, nombre, apellido, facultad, telefono, materias, email, usuario,
 				programa);
@@ -73,7 +74,7 @@ public class ControladorEstudiante {
 			@RequestParam String usuario) {
 		if (!repositorioEstudiantesDAO.existsById(id)) {
 			Estudiante estudiante = new Estudiante(id, nombre, apellido, new ArrayList<Facultad>(), telefono,
-					new ArrayList<Materia>(), email, usuario, new ArrayList<Programa>());
+					new ArrayList<Materia>(), email, usuario, new TreeSet<Programa>());
 			repositorioEstudiantesDAO.save(estudiante);
 			return "El estudiante " + estudiante.getNombre() + " fue agregado satisfactoriamente";
 		} else
